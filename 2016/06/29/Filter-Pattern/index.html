@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Design Patterns - Filter Pattern | China Magic Boy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Thank you for tutorialspoint
+
+Filter pattern or Criteria pattern is a design pattern that enables developers to filter a set of objects using different criteria and chaining them in a decoupled way th">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Design Patterns - Filter Pattern">
+<meta property="og:url" content="http://chinamagicboy.github.io/archives/2016/06/29/Filter-Pattern/index.html">
+<meta property="og:site_name" content="China Magic Boy">
+<meta property="og:description" content="Thank you for tutorialspoint
+
+Filter pattern or Criteria pattern is a design pattern that enables developers to filter a set of objects using different criteria and chaining them in a decoupled way th">
+<meta property="og:updated_time" content="2016-06-29T02:22:11.180Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Design Patterns - Filter Pattern">
+<meta name="twitter:description" content="Thank you for tutorialspoint
+
+Filter pattern or Criteria pattern is a design pattern that enables developers to filter a set of objects using different criteria and chaining them in a decoupled way th">
+  
+    <link rel="alternate" href="/atom.xml" title="China Magic Boy" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">China Magic Boy</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://chinamagicboy.github.io/archives"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Filter-Pattern" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/29/Filter-Pattern/" class="article-date">
+  <time datetime="2016-06-29T01:58:43.000Z" itemprop="datePublished">2016-06-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Design Patterns - Filter Pattern
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <font color="red">Thank you for <a href="http://www.tutorialspoint.com/design_pattern/filter_pattern.htm">tutorialspoint</a></font>
+
+<p>Filter pattern or Criteria pattern is a design pattern that enables developers to filter a set of objects using different criteria and chaining them in a decoupled way through logical operations. This type of design pattern comes under structural pattern as this pattern combines multiple criteria to obtain single criteria.</p>
+<h2 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h2><p>We’re going to create a <strong>Person</strong> object, <strong>Criteria</strong> interface and concrete classes implementing this interface to filter list of Person objects. <strong>CriteriaPatternDemo</strong>, our demo class uses <strong>Criteria</strong> objects to filter List of <strong>Person</strong> objects based on various criteria and their combinations.</p>
+<h3 id="Step-1"><a href="#Step-1" class="headerlink" title="Step 1"></a>Step 1</h3><p>Create a class on which criteria is to be applied.</p>
+<p><em>Person.java</em><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">private</span> String name;</span><br><span class="line">   <span class="keyword">private</span> String gender;</span><br><span class="line">   <span class="keyword">private</span> String maritalStatus;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String name, String gender, String maritalStatus)</span></span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.name = name;</span><br><span class="line">      <span class="keyword">this</span>.gender = gender;</span><br><span class="line">      <span class="keyword">this</span>.maritalStatus = maritalStatus;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> name;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">getGender</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> gender;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">getMaritalStatus</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> maritalStatus;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Step-2"><a href="#Step-2" class="headerlink" title="Step 2"></a>Step 2</h3><p>Create an interface for Criteria.</p>
+<p><em>Criteria.java</em><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Criteria</span> </span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> List&lt;Person&gt; <span class="title">meetCriteria</span><span class="params">(List&lt;Person&gt; persons)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Step-3"><a href="#Step-3" class="headerlink" title="Step 3"></a>Step 3</h3><p>Create concrete classes implementing the Criteria interface.</p>
+<p><em>CriteriaMale.java</em><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CriteriaMale</span> <span class="keyword">implements</span> <span class="title">Criteria</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> List&lt;Person&gt; <span class="title">meetCriteria</span><span class="params">(List&lt;Person&gt; persons)</span> </span>&#123;</span><br><span class="line">      List&lt;Person&gt; malePersons = <span class="keyword">new</span> ArrayList&lt;Person&gt;();</span><br><span class="line"></span><br><span class="line">      <span class="keyword">for</span> (Person person : persons) &#123;</span><br><span class="line">         <span class="keyword">if</span>(person.getGender().equalsIgnoreCase(<span class="string">"MALE"</span>))&#123;</span><br><span class="line">            malePersons.add(person);</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> malePersons;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><em>CriteriaFemale.java</em><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CriteriaFemale</span> <span class="keyword">implements</span> <span class="title">Criteria</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> List&lt;Person&gt; <span class="title">meetCriteria</span><span class="params">(List&lt;Person&gt; persons)</span> </span>&#123;</span><br><span class="line">      List&lt;Person&gt; femalePersons = <span class="keyword">new</span> ArrayList&lt;Person&gt;();</span><br><span class="line"></span><br><span class="line">      <span class="keyword">for</span> (Person person : persons) &#123;</span><br><span class="line">         <span class="keyword">if</span>(person.getGender().equalsIgnoreCase(<span class="string">"FEMALE"</span>))&#123;</span><br><span class="line">            femalePersons.add(person);</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> femalePersons;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><em>CriteriaSingle.java</em><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CriteriaSingle</span> <span class="keyword">implements</span> <span class="title">Criteria</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> List&lt;Person&gt; <span class="title">meetCriteria</span><span class="params">(List&lt;Person&gt; persons)</span> </span>&#123;</span><br><span class="line">      List&lt;Person&gt; singlePersons = <span class="keyword">new</span> ArrayList&lt;Person&gt;();</span><br><span class="line"></span><br><span class="line">      <span class="keyword">for</span> (Person person : persons) &#123;</span><br><span class="line">         <span class="keyword">if</span>(person.getMaritalStatus().equalsIgnoreCase(<span class="string">"SINGLE"</span>))&#123;</span><br><span class="line">            singlePersons.add(person);</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> singlePersons;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><em>AndCriteria.java</em><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AndCriteria</span> <span class="keyword">implements</span> <span class="title">Criteria</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">private</span> Criteria criteria;</span><br><span class="line">   <span class="keyword">private</span> Criteria otherCriteria;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="title">AndCriteria</span><span class="params">(Criteria criteria, Criteria otherCriteria)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.criteria = criteria;</span><br><span class="line">      <span class="keyword">this</span>.otherCriteria = otherCriteria;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> List&lt;Person&gt; <span class="title">meetCriteria</span><span class="params">(List&lt;Person&gt; persons)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">      List&lt;Person&gt; firstCriteriaPersons = criteria.meetCriteria(persons);</span><br><span class="line">      <span class="keyword">return</span> otherCriteria.meetCriteria(firstCriteriaPersons);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><em>OrCriteria.java</em><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OrCriteria</span> <span class="keyword">implements</span> <span class="title">Criteria</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">private</span> Criteria criteria;</span><br><span class="line">   <span class="keyword">private</span> Criteria otherCriteria;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="title">OrCriteria</span><span class="params">(Criteria criteria, Criteria otherCriteria)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.criteria = criteria;</span><br><span class="line">      <span class="keyword">this</span>.otherCriteria = otherCriteria;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> List&lt;Person&gt; <span class="title">meetCriteria</span><span class="params">(List&lt;Person&gt; persons)</span> </span>&#123;</span><br><span class="line">      List&lt;Person&gt; firstCriteriaItems = criteria.meetCriteria(persons);</span><br><span class="line">      List&lt;Person&gt; otherCriteriaItems = otherCriteria.meetCriteria(persons);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">for</span> (Person person : otherCriteriaItems) &#123;</span><br><span class="line">         <span class="keyword">if</span>(!firstCriteriaItems.contains(person))&#123;</span><br><span class="line">            firstCriteriaItems.add(person);</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> firstCriteriaItems;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Step4"><a href="#Step4" class="headerlink" title="Step4"></a>Step4</h3><p>Use different Criteria and their combination to filter out persons.</p>
+<p><em>CriteriaPatternDemo.java</em><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CriteriaPatternDemo</span> </span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">      List&lt;Person&gt; persons = <span class="keyword">new</span> ArrayList&lt;Person&gt;();</span><br><span class="line"></span><br><span class="line">      persons.add(<span class="keyword">new</span> Person(<span class="string">"Robert"</span>,<span class="string">"Male"</span>, <span class="string">"Single"</span>));</span><br><span class="line">      persons.add(<span class="keyword">new</span> Person(<span class="string">"John"</span>, <span class="string">"Male"</span>, <span class="string">"Married"</span>));</span><br><span class="line">      persons.add(<span class="keyword">new</span> Person(<span class="string">"Laura"</span>, <span class="string">"Female"</span>, <span class="string">"Married"</span>));</span><br><span class="line">      persons.add(<span class="keyword">new</span> Person(<span class="string">"Diana"</span>, <span class="string">"Female"</span>, <span class="string">"Single"</span>));</span><br><span class="line">      persons.add(<span class="keyword">new</span> Person(<span class="string">"Mike"</span>, <span class="string">"Male"</span>, <span class="string">"Single"</span>));</span><br><span class="line">      persons.add(<span class="keyword">new</span> Person(<span class="string">"Bobby"</span>, <span class="string">"Male"</span>, <span class="string">"Single"</span>));</span><br><span class="line"></span><br><span class="line">      Criteria male = <span class="keyword">new</span> CriteriaMale();</span><br><span class="line">      Criteria female = <span class="keyword">new</span> CriteriaFemale();</span><br><span class="line">      Criteria single = <span class="keyword">new</span> CriteriaSingle();</span><br><span class="line">      Criteria singleMale = <span class="keyword">new</span> AndCriteria(single, male);</span><br><span class="line">      Criteria singleOrFemale = <span class="keyword">new</span> OrCriteria(single, female);</span><br><span class="line"></span><br><span class="line">      System.out.println(<span class="string">"Males: "</span>);</span><br><span class="line">      printPersons(male.meetCriteria(persons));</span><br><span class="line"></span><br><span class="line">      System.out.println(<span class="string">"\nFemales: "</span>);</span><br><span class="line">      printPersons(female.meetCriteria(persons));</span><br><span class="line"></span><br><span class="line">      System.out.println(<span class="string">"\nSingle Males: "</span>);</span><br><span class="line">      printPersons(singleMale.meetCriteria(persons));</span><br><span class="line"></span><br><span class="line">      System.out.println(<span class="string">"\nSingle Or Females: "</span>);</span><br><span class="line">      printPersons(singleOrFemale.meetCriteria(persons));</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printPersons</span><span class="params">(List&lt;Person&gt; persons)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">for</span> (Person person : persons) &#123;</span><br><span class="line">         System.out.println(<span class="string">"Person : [ Name : "</span> + person.getName() + <span class="string">", Gender : "</span> + person.getGender() + <span class="string">", Marital Status : "</span> + person.getMaritalStatus() + <span class="string">" ]"</span>);</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Step-5"><a href="#Step-5" class="headerlink" title="Step 5"></a>Step 5</h3><p>Verify the output.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Males:</span><br><span class="line">Person : [ Name : Robert, Gender : Male, Marital Status : Single ]</span><br><span class="line">Person : [ Name : John, Gender : Male, Marital Status : Married ]</span><br><span class="line">Person : [ Name : Mike, Gender : Male, Marital Status : Single ]</span><br><span class="line">Person : [ Name : Bobby, Gender : Male, Marital Status : Single ]</span><br><span class="line"></span><br><span class="line">Females:</span><br><span class="line">Person : [ Name : Laura, Gender : Female, Marital Status : Married ]</span><br><span class="line">Person : [ Name : Diana, Gender : Female, Marital Status : Single ]</span><br><span class="line"></span><br><span class="line">Single Males:</span><br><span class="line">Person : [ Name : Robert, Gender : Male, Marital Status : Single ]</span><br><span class="line">Person : [ Name : Mike, Gender : Male, Marital Status : Single ]</span><br><span class="line">Person : [ Name : Bobby, Gender : Male, Marital Status : Single ]</span><br><span class="line"></span><br><span class="line">Single Or Females:</span><br><span class="line">Person : [ Name : Robert, Gender : Male, Marital Status : Single ]</span><br><span class="line">Person : [ Name : Diana, Gender : Female, Marital Status : Single ]</span><br><span class="line">Person : [ Name : Mike, Gender : Male, Marital Status : Single ]</span><br><span class="line">Person : [ Name : Bobby, Gender : Male, Marital Status : Single ]</span><br><span class="line">Person : [ Name : Laura, Gender : Female, Marital Status : Married ]</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://chinamagicboy.github.io/archives/2016/06/29/Filter-Pattern/" data-id="ciq08gz8900022ocnnqam6okc" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Pattern/">Design Pattern</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/06/29/Composite-Pattern/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          Design Patterns - Composite Pattern
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/06/29/Bridge-Pattern/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">Design Patterns - Bridge Pattern</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Design-Pattern/">Design Pattern</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Design-Pattern/" style="font-size: 10px;">Design Pattern</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/06/29/Composite-Pattern/">Design Patterns - Composite Pattern</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/29/Filter-Pattern/">Design Patterns - Filter Pattern</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/29/Bridge-Pattern/">Design Patterns - Bridge Pattern</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/28/Adapter-Pattern/">Design Patterns - Adapter Pattern</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/28/Prototype-Pattern/">Design Patterns - Prototype Pattern</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Yong Jie<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

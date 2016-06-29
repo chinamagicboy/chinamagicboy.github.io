@@ -3,26 +3,26 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Design Patterns - Builder Pattern | Hexo</title>
+  <title>Design Patterns - Builder Pattern | China Magic Boy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Thank you for tutorialspoint
 
 Builder pattern builds a complex object using simple objects and using a step by step approach. This type of design pattern comes under creational pattern as this pattern">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Design Patterns - Builder Pattern">
-<meta property="og:url" content="http://yoursite.com/2016/06/28/Builder-Pattern/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:url" content="http://chinamagicboy.github.io/archives/2016/06/28/Builder-Pattern/index.html">
+<meta property="og:site_name" content="China Magic Boy">
 <meta property="og:description" content="Thank you for tutorialspoint
 
 Builder pattern builds a complex object using simple objects and using a step by step approach. This type of design pattern comes under creational pattern as this pattern">
-<meta property="og:updated_time" content="2016-06-28T02:38:22.830Z">
+<meta property="og:updated_time" content="2016-06-29T01:41:22.675Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Design Patterns - Builder Pattern">
 <meta name="twitter:description" content="Thank you for tutorialspoint
 
 Builder pattern builds a complex object using simple objects and using a step by step approach. This type of design pattern comes under creational pattern as this pattern">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="China Magic Boy" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -43,7 +43,7 @@ Builder pattern builds a complex object using simple objects and using a step by
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
+        <a href="/" id="logo">China Magic Boy</a>
       </h1>
       
     </div>
@@ -58,12 +58,12 @@ Builder pattern builds a complex object using simple objects and using a step by
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://chinamagicboy.github.io/archives"></form>
       </div>
     </div>
   </div>
@@ -91,7 +91,7 @@ Builder pattern builds a complex object using simple objects and using a step by
     
     <div class="article-entry" itemprop="articleBody">
       
-        <font color="red">Thank you for <a href="http://www.tutorialspoint.com/design_pattern/builder_pattern.htm" target="_blank" rel="external">tutorialspoint</a></font>
+        <font color="red">Thank you for <a href="http://www.tutorialspoint.com/design_pattern/builder_pattern.htm">tutorialspoint</a></font>
 
 <p>Builder pattern builds a complex object using simple objects and using a step by step approach. This type of design pattern comes under creational pattern as this pattern provides one of the best ways to create an object.</p>
 <p>A Builder class builds the final object step by step. This builder is independent of other objects.</p>
@@ -99,7 +99,7 @@ Builder pattern builds a complex object using simple objects and using a step by
 <p>We are going to create an <strong>Item</strong> interface representing food items such as burgers and cold drinks and concrete classes implementing the Item interface and a <strong>Packing</strong> interface representing packaging of food items and concrete classes implementing the Packing interface as burger would be packed in wrapper and cold drink would be packed as bottle.</p>
 <p>We then create a <strong>Meal</strong> class having ArrayList of Item and a <strong>MealBuilder</strong> to build different types of Meal objects by combining Item. <strong>BuilderPatternDemo</strong>, our demo class will use MealBuilder to build a Meal.</p>
 <h3 id="Step-1"><a href="#Step-1" class="headerlink" title="Step 1"></a>Step 1</h3><p>Create an interface Item representing food item and packing.</p>
-<p><em>Item.java</em><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Item</span> </span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">name</span><span class="params">()</span></span>;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> Packing <span class="title">packing</span><span class="params">()</span></span>;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">float</span> <span class="title">price</span><span class="params">()</span></span>;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><em>Item.java</em><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Item</span> </span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">name</span><span class="params">()</span></span>;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> Packing <span class="title">packing</span><span class="params">()</span></span>;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">float</span> <span class="title">price</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p><em>Packing.java</em><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Packing</span> </span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">pack</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="Step-2"><a href="#Step-2" class="headerlink" title="Step 2"></a>Step 2</h3><p>Create concrete classes implementing the Packing interface.</p>
 <p><em>Wrapper.java</em><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Wrapper</span> <span class="keyword">implements</span> <span class="title">Packing</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">pack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">"Wrapper"</span>;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -123,7 +123,7 @@ Builder pattern builds a complex object using simple objects and using a step by
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/06/28/Builder-Pattern/" data-id="cipz1crrr0003xwcn8wdnq718" class="article-share-link">Share</a>
+      <a data-url="http://chinamagicboy.github.io/archives/2016/06/28/Builder-Pattern/" data-id="cipz8qw0y0004y8cnrtitea0k" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design-Pattern/">Design Pattern</a></li></ul>
@@ -135,7 +135,7 @@ Builder pattern builds a complex object using simple objects and using a step by
 <nav id="article-nav">
   
     <a href="/2016/06/28/Prototype-Pattern/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">Récent</strong>
       <div class="article-nav-title">
         
           Design Patterns - Prototype Pattern
@@ -145,8 +145,8 @@ Builder pattern builds a complex object using simple objects and using a step by
   
   
     <a href="/2016/06/28/Singleton-Pattern/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Design Pattern - Singleton Pattern</div>
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">Design Patterns - Singleton Pattern</div>
     </a>
   
 </nav>
@@ -163,7 +163,7 @@ Builder pattern builds a complex object using simple objects and using a step by
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
+    <h3 class="widget-title">Mot-clés</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Design-Pattern/">Design Pattern</a></li></ul>
     </div>
@@ -173,7 +173,7 @@ Builder pattern builds a complex object using simple objects and using a step by
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
+    <h3 class="widget-title">Nuage de mot-clés</h3>
     <div class="widget tagcloud">
       <a href="/tags/Design-Pattern/" style="font-size: 10px;">Design Pattern</a>
     </div>
@@ -192,9 +192,21 @@ Builder pattern builds a complex object using simple objects and using a step by
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/06/29/Composite-Pattern/">Design Patterns - Composite Pattern</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/29/Filter-Pattern/">Design Patterns - Filter Pattern</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/29/Bridge-Pattern/">Design Patterns - Bridge Pattern</a>
+          </li>
         
           <li>
             <a href="/2016/06/28/Adapter-Pattern/">Design Patterns - Adapter Pattern</a>
@@ -202,18 +214,6 @@ Builder pattern builds a complex object using simple objects and using a step by
         
           <li>
             <a href="/2016/06/28/Prototype-Pattern/">Design Patterns - Prototype Pattern</a>
-          </li>
-        
-          <li>
-            <a href="/2016/06/28/Builder-Pattern/">Design Patterns - Builder Pattern</a>
-          </li>
-        
-          <li>
-            <a href="/2016/06/28/Singleton-Pattern/">Design Pattern - Singleton Pattern</a>
-          </li>
-        
-          <li>
-            <a href="/2016/06/28/Abstract-Factory-Pattern/">Design Pattern - Abstract Factory Pattern</a>
           </li>
         
       </ul>
@@ -228,8 +228,8 @@ Builder pattern builds a complex object using simple objects and using a step by
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2016 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      &copy; 2016 Yong Jie<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
